@@ -160,6 +160,7 @@ contract SupplyChain {
     // Add the new item as part of Harvest
     items[_upc].sku = sku;
     items[_upc].upc = upc;
+    items[_upc].productID = sku + upc;
     items[_upc].ownerID = _originFarmerID;
     items[_upc].originFarmerID = _originFarmerID;
     items[_upc].originFarmName = _originFarmName;
@@ -176,7 +177,7 @@ contract SupplyChain {
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function processItem(uint _upc) public harvested(_upc)
+  function processItem(uint _upc) public harvested(_upc) verifyCaller(items[_upc].originFarmerID)
   {
     // Call modifier to check if upc has passed previous supply chain stage
     // Call modifier to verify caller of this function
@@ -184,11 +185,11 @@ contract SupplyChain {
     // Update the appropriate fields
     items[_upc].itemState = State.Processed;
     // Emit the appropriate event
-    emit Harvested(_upc);
+    emit Processed(_upc);
   }
 
   // Define a function 'packItem' that allows a farmer to mark an item 'Packed'
-  function packItem(uint _upc) public processed(_upc)
+  function packItem(uint _upc) public processed(_upc) verifyCaller(items[_upc].originFarmerID)
   {
     // Call modifier to check if upc has passed previous supply chain stage
     // Call modifier to verify caller of this function
@@ -200,7 +201,7 @@ contract SupplyChain {
   }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
-  function sellItem(uint _upc, uint _price) public 
+  function sellItem(uint _upc, uint _price) public verifyCaller(items[_upc].originFarmerID)
   {
     // Call modifier to check if upc has passed previous supply chain stage
     // Call modifier to verify caller of this function
@@ -239,7 +240,7 @@ contract SupplyChain {
     // Call modifier to check if upc has passed previous supply chain stage
     sold(_upc)
     // Call modifier to verify caller of this function
-    
+    verifyCaller(items[_upc].distributorID)
     {
     // Update the appropriate fields
     items[_upc].itemState = State.Shipped;

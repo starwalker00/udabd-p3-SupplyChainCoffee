@@ -2664,14 +2664,42 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0x2e0ded4123377a3c2bc9a26f1717655a129e2f20752924d42e730ec89c83dbd0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "FarmerAdded",
+          "type": "event"
+        },
+        "0xa5e0f060af304ab17dd418c7927e3da3ae7868189bf387aee09ab179ccc572f2": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "FarmerRemoved",
+          "type": "event"
+        }
+      },
       "links": {},
       "address": "0xE1C8D9244b841eC5e4d8B767004aE844AA1c1dEb",
       "transactionHash": "0xb4378e444d3a31d301d28b1bb5ac080bc3c3261f6f4518263c585786ae456760"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-29T16:38:49.255Z",
+  "updatedAt": "2021-08-29T19:03:26.412Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

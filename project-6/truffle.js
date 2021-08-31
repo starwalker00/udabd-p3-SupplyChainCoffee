@@ -14,6 +14,7 @@ module.exports = {
     rinkeby: {
       provider: () => new HDWalletProvider(privatekey, `https://rinkeby.infura.io/v3/${infuraKey}`),
       network_id: 4,       // rinkeby's id
+      networkCheckTimeout: 10000,
     }
   }
 };

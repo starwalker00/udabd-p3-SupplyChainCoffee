@@ -1,5 +1,9 @@
 ##
 
+Sequence Diagram
+
+![Sequence Diagram](arch/seq.png)
+
 ```
 contract address 0xf8d563948c0011eac601a01a24e9a40e95bc6786
 https://rinkeby.etherscan.io/address/0xf8d563948c0011eac601a01a24e9a40e95bc6786

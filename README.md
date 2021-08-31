@@ -28,6 +28,16 @@ This library is basically the go-to library for front-end smart contract interac
 
 IPFS is not used in this project.
 
+## Version used
+
+```bash
+ubuntu_u0@DESKTOP-LGHKGK8:~/uda-bd/udabd-p3-SupplyChainCoffee/project-6$ truffle version
+Truffle v5.4.7 (core: 5.4.7)
+Solidity v0.5.16 (solc-js)
+Node v16.5.0
+Web3.js v1.5.2
+```
+
 ## Rinkeby deployment
 
 ```

@@ -6,9 +6,8 @@ Sequence Diagram
 
 ```
 contract address 0xf8d563948c0011eac601a01a24e9a40e95bc6786
-<https://rinkeby.etherscan.io/address/0xf8d563948c0011eac601a01a24e9a40e95bc6786>
 ```
-
+<https://rinkeby.etherscan.io/address/0xf8d563948c0011eac601a01a24e9a40e95bc6786>
 
 # Supply chain & data auditing
 

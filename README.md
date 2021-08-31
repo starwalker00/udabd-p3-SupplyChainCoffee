@@ -1,6 +1,6 @@
 # Main Product
 
-## Architecture
+## UML
 
 ### Sequence Diagram
 
@@ -13,6 +13,20 @@
 ### Class Diagram
 
 ![Class Diagram](arch/class.svg)
+
+## Libraries
+
+### web3js
+
+This library is basically the go-to library for front-end smart contract interaction via blockchain nodes. It contains all the functionalities needed to :
+
+- manage connected web3 wallets 
+- sign transaction
+- submit transactions to the blockchain
+
+### IPFS
+
+IPFS is not used in this project.
 
 ## Rinkeby deployment
 

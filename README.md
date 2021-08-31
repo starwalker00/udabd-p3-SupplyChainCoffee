@@ -16,6 +16,16 @@
 
 ## Libraries
 
+### Truffle
+
+Truffle is a development environment, testing framework and asset pipeline for Ethereum, aiming to make life as an Ethereum developer easier. 
+It provides direct ways to :
+
+- compile, test and deploy smart contracts
+- inject jsonAbi into a front-end
+- manage different networks
+- use a development environment in a console with a local blockchain provided by ganache
+
 ### web3js
 
 This library is basically the go-to library for front-end smart contract interaction via blockchain nodes. It contains all the functionalities needed to :
@@ -28,10 +38,10 @@ This library is basically the go-to library for front-end smart contract interac
 
 IPFS is not used in this project.
 
-## Version used
+## Versions used
 
 ```bash
-ubuntu_u0@DESKTOP-LGHKGK8:~/uda-bd/udabd-p3-SupplyChainCoffee/project-6$ truffle version
+ubuntu_u0@Distributed:~/uda-bd/udabd-p3-SupplyChainCoffee/project-6$ truffle version
 Truffle v5.4.7 (core: 5.4.7)
 Solidity v0.5.16 (solc-js)
 Node v16.5.0

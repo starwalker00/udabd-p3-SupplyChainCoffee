@@ -6,6 +6,10 @@
 
 ![Sequence Diagram](arch/seq.png)
 
+### State Diagram
+
+![State Diagram](arch/state.png)
+
 ### Class Diagram
 
 ![Class Diagram](arch/class.svg)

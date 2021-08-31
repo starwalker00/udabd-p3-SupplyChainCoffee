@@ -1,12 +1,16 @@
-##
+# Main Product
 
-Sequence Diagram
+## Architecture
+
+### Sequence Diagram
 
 ![Sequence Diagram](arch/seq.png)
 
-Class Diagram
+### Class Diagram
 
 ![Class Diagram](arch/class.svg)
+
+## Rinkeby deployment
 
 ```
 contract address 0xf8d563948c0011eac601a01a24e9a40e95bc6786

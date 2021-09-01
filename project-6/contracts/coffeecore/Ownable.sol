@@ -1,49 +1,77 @@
 pragma solidity ^0.5.0;
 
-/// Provides basic authorization control
-contract Ownable {
-    address private origOwner;
+import "./GSNContext.sol";
+/**
+ * @dev Contract module which provides a basic access control mechanism, where
+ * there is an account (an owner) that can be granted exclusive access to
+ * specific functions.
+ *
+ * This module is used through inheritance. It will make available the modifier
+ * `onlyOwner`, which can be applied to your functions to restrict their use to
+ * the owner.
+ */
+contract Ownable is Context {
+    address private _owner;
 
-    // Define an Event
-    event TransferOwnership(address indexed oldOwner, address indexed newOwner);
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    /// Assign the contract to an owner
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
     constructor () internal {
-        origOwner = msg.sender;
-        emit TransferOwnership(address(0), origOwner);
+        address msgSender = _msgSender();
+        _owner = msgSender;
+        emit OwnershipTransferred(address(0), msgSender);
     }
 
-    /// Look up the address of the owner
+    /**
+     * @dev Returns the address of the current owner.
+     */
     function owner() public view returns (address) {
-        return origOwner;
+        return _owner;
     }
 
-    /// Define a function modifier 'onlyOwner'
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
     modifier onlyOwner() {
-        require(isOwner());
+        require(isOwner(), "Ownable: caller is not the owner");
         _;
     }
 
-    /// Check if the calling address is the owner of the contract
+    /**
+     * @dev Returns true if the caller is the current owner.
+     */
     function isOwner() public view returns (bool) {
-        return msg.sender == origOwner;
+        return _msgSender() == _owner;
     }
 
-    /// Define a function to renounce ownerhip
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
     function renounceOwnership() public onlyOwner {
-        emit TransferOwnership(origOwner, address(0));
-        origOwner = address(0);
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
     }
 
-    /// Define a public function to transfer ownership
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
     function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
     }
 
-    /// Define an internal function to transfer ownership
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     */
     function _transferOwnership(address newOwner) internal {
-        require(newOwner != address(0));
-        emit TransferOwnership(origOwner, newOwner);
-        origOwner = newOwner;
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
     }
 }

@@ -130,6 +130,8 @@ App = {
         var processId = parseInt($(event.target).data('id'));
         console.log('processId',processId);
 
+        App.readForm();
+
         switch(processId) {
             case 1:
                 return await App.harvestItem(event);
@@ -167,7 +169,7 @@ App = {
     harvestItem: function(event) {
         event.preventDefault();
         var processId = parseInt($(event.target).data('id'));
-
+        console.log('originFarmLatitude',App.originFarmLatitude);
         App.contracts.SupplyChain.deployed().then(function(instance) {
             return instance.harvestItem(
                 App.upc, 
@@ -177,7 +179,7 @@ App = {
                 App.originFarmLatitude, 
                 App.originFarmLongitude, 
                 App.productNotes,
-                {from: App.originFarmerID}
+                {from: App.metamaskAccountID}
             );
         }).then(function(result) {
             $("#ftc-item").text(result);
@@ -220,9 +222,10 @@ App = {
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            const productPrice = web3.utils.toWei("1", "ether");
-            console.log('productPrice',productPrice);
-            return instance.sellItem(App.upc, App.productPrice, {from: App.metamaskAccountID});
+            //const productPrice = web3.utils.toWei("0.066", "ether");
+            console.log('productPrice',App.productPrice);
+            const productPrice = web3.utils.toWei(App.productPrice, "ether");
+            return instance.sellItem(App.upc, productPrice, {from: App.metamaskAccountID});
         }).then(function(result) {
             $("#ftc-item").text(result);
             console.log('sellItem',result);
@@ -236,7 +239,7 @@ App = {
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            const walletValue = web3.utils.toWei("3", "ether");
+            const walletValue = web3.utils.toWei("0.031416", "ether");
             return instance.buyItem(App.upc, {from: App.metamaskAccountID, value: walletValue});
         }).then(function(result) {
             $("#ftc-item").text(result);
@@ -307,9 +310,11 @@ App = {
     fetchItemBufferTwo: function () {
     ///    event.preventDefault();
     ///    var processId = parseInt($(event.target).data('id'));
-                        
+        App.upc = $('#upc').val();
+        console.log('upc',App.upc); 
+
         App.contracts.SupplyChain.deployed().then(function(instance) {
-          return instance.fetchItemBufferTwo.call(App.upc);
+          return instance.fetchItemBufferTwo(App.upc);
         }).then(function(result) {
           $("#ftc-item").text(result);
           console.log('fetchItemBufferTwo', result);

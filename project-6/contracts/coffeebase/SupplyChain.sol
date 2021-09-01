@@ -4,15 +4,16 @@ import "../coffeeaccesscontrol/FarmerRole.sol";
 import "../coffeeaccesscontrol/DistributorRole.sol";
 import "../coffeeaccesscontrol/RetailerRole.sol";
 import "../coffeeaccesscontrol/ConsumerRole.sol";
+import "../coffeecore/Ownable.sol";
 
 // Define a contract 'Supplychain'
-contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole {
+contract SupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, ConsumerRole {
 
   // Define 'owner'
-  address owner;
+  //address owner;
 
   // Define a variable called 'upc' for Universal Product Code (UPC)
-  uint  upc;
+  //uint  upc;
 
   // Define a variable called 'sku' for Stock Keeping Unit (SKU)
   uint  sku;
@@ -69,10 +70,12 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole 
   event Purchased(uint upc);
 
   // Define a modifer that checks to see if msg.sender == owner of the contract
+  /* defined in Ownable.sol
   modifier onlyOwner() {
     require(msg.sender == owner);
     _;
   }
+  */
 
   // Define a modifer that verifies the Caller
   modifier verifyCaller (address _address) {
@@ -146,9 +149,9 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole 
   // and set 'sku' to 1
   // and set 'upc' to 1
   constructor() public payable {
-    owner = msg.sender;
+    //owner = msg.sender;
     sku = 1;
-    upc = 1;
+    //upc = 1;
   }
 
   // Define a function 'kill' if required
@@ -164,10 +167,12 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole 
   function harvestItem(uint _upc, address payable _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string  memory _originFarmLatitude, string  memory _originFarmLongitude, string memory _productNotes) public 
   onlyFarmer()
   {
+    // use upc as unique key
+    require(items[_upc].upc == 0, "UPC already exists");
     // Add the new item as part of Harvest
     items[_upc].sku = sku;
-    items[_upc].upc = upc;
-    items[_upc].productID = sku + upc;
+    items[_upc].upc = _upc;
+    items[_upc].productID = sku + _upc;
     items[_upc].ownerID = _originFarmerID;
     items[_upc].originFarmerID = _originFarmerID;
     items[_upc].originFarmName = _originFarmName;

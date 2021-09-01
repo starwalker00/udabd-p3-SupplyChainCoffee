@@ -2,6 +2,10 @@
 
 ## UML
 
+### Activity Diagram
+
+![Activity Diagram](arch/activity.png)
+
 ### Sequence Diagram
 
 ![Sequence Diagram](arch/seq.png)
@@ -51,12 +55,10 @@ Web3.js v1.5.2
 ## Rinkeby deployment
 
 ```
-contract address : 0xf8d563948c0011eac601a01a24e9a40e95bc6786
-contract creation transaction : 0x417715d47b8c9ab0c942910bc27a29e8f1ca1daeb439297675ebf91ed5f498bb
+contract address : 0xFFa8731679C34B7E08463F0baE0d2BC3D4fD6a37
 ```
 
-contract address <https://rinkeby.etherscan.io/address/0xf8d563948c0011eac601a01a24e9a40e95bc6786>
-contract creation transaction <https://rinkeby.etherscan.io/tx/0x417715d47b8c9ab0c942910bc27a29e8f1ca1daeb439297675ebf91ed5f498bb>
+contract address <https://rinkeby.etherscan.io/address/0xFFa8731679C34B7E08463F0baE0d2BC3D4fD6a37>
 
 # Supply chain & data auditing
 
